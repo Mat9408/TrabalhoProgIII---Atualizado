@@ -1,0 +1,53 @@
+﻿@model IEnumerable<SportsECommerce.Models.Produto>
+
+@{
+    ViewData["Title"] = "Lista de Produtos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Adicionar novo Produto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ProdutoID)
+            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoModelo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdutoPreco)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoModelo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProdutoPreco)
+            </td>
+            <td>
+                @Html.ActionLink("Editar","Edit", new { id=item.ProdutoID }) |
+                @Html.ActionLink("Detalhes","Details", new { id=item.ProdutoID }) |
+                @Html.ActionLink("Excluir","Delete", new { id=item.ProdutoID }) |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
